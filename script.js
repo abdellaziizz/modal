@@ -3,16 +3,19 @@ const modal = document.querySelector('.modal');
 const overlay = document.querySelector('.overlay');
 const closeButton = document.querySelector('.close-modal');
 const showModalButtons = document.querySelectorAll('.show-modal');
+
 for (let i = 0; i < showModalButtons.length; i++) {
-  document
-    .querySelectorAll('.show-modal')
-    [i].addEventListener('click', function () {
-      modal.classList.remove('hidden');
-    });
-  if (!showModalButtons[i].classList.contains('hidden')) {
-    closeButton.addEventListener('click', function () {
-      modal.classList.add('hidden');
-      overlay.classList.add('hidden');
-    });
-  }
+  showModalButtons[i].addEventListener('click', function () {
+    modal.classList.remove('hidden');
+  });
 }
+
+function closeModal() {
+  overlay.classList.add('hidden');
+  modal.classList.add('hidden');
+}
+function openModal() {
+  overlay.classList.remove('hidden');
+  modal.classList.remove('hidden');
+}
+closeButton.addEventListener('click', closeModal);
